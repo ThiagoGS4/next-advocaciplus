@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+[data-theme='light']{
+  --login-background: #f6faff;
+}
+
+[data-theme='dark']{
+  --login-background: #1d1d1d;
+}

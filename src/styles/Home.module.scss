@@ -1,0 +1,26 @@
+$border-color: '#3a3b3a';
+
+.mainStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner {
+    display: block;
+    position: relative;
+    width: 30vw;
+    height: 65vh;
+    overflow: hidden;
+    border: 1px solid $border-color;
+    background: var(--login-background);
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+    border-radius: 10px;
+}

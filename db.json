@@ -1,0 +1,17 @@
+{
+  "users":[
+    {"status": "unauthenticated",
+        "user": {
+            "data": {
+                "email": "cleb@email.com",
+                "username": "clebin",
+                "token": "",
+                "password": ""
+            },
+            "info": {
+                "name": "Cleber",
+                "age": 34
+            }
+        }}
+  ]
+}
