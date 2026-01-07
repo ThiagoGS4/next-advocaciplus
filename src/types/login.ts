@@ -1,14 +1,17 @@
 export interface IUserProps {
-    status: 'authenticated' | 'loading' | 'unauthenticated'
+    status: "authenticated" | "loading" | "unauthenticated"
     user: {
         data: {
-            email: string
-            username: string
-            token: string
-        }
-        info: {
-            name: string
-            age: number
+            auth: {
+                email: string
+                username: string
+                token: string
+                refresh_token: string
+            }
+            info: {
+                name: string
+                age: number
+            }
         }
     }
 }

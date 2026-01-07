@@ -5,6 +5,7 @@ $border-color: '#3a3b3a';
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
 }
 
 .banner {
@@ -14,13 +15,12 @@ $border-color: '#3a3b3a';
     height: 65vh;
     overflow: hidden;
     border: 1px solid $border-color;
-    background: var(--login-background);
 }
 
 .loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: gray;
+    background-color: rgb(51, 50, 50);
     border-radius: 10px;
 }
