@@ -1,5 +1,6 @@
 import { IUserProps } from "@/types/login"
 import jwt from "jsonwebtoken"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import dotenv from "dotenv"
 import { NextApiRequest, NextApiResponse } from "next"
 
@@ -8,11 +9,11 @@ const jwtSign = (object: any): string => {
     // mexer aqui no auth??
     const user: IUserProps = {
         status: object.status,
+        email: "",
+        username: "",
         user: {
             data: {
                 auth: {
-                    email: "",
-                    username: "",
                     token: "",
                     refresh_token: "",
                 },

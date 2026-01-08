@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import Head from "next/head"
 import { useTranslations } from "next-intl"
 import styles from "../styles/Home.module.scss"
-import { Box, Flex, TextField } from "@radix-ui/themes"
+import { Box } from "@radix-ui/themes"
 import {
     EyeClosedIcon,
     EyeOpenIcon,
@@ -33,10 +33,10 @@ export default function Home() {
     const [hasError, setHasError] = useState(false)
     const [passwordShow, setPasswordShow] = useState(false)
     const [password, setPassword] = useState("")
-    const [username, setUsername] = useState("")
+    const [username, setUsername] = useState("") //email
 
     function login() {
-
+        signIn(username, password)
     }
 
     return (

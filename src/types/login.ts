@@ -1,10 +1,10 @@
 export interface IUserProps {
     status: "authenticated" | "loading" | "unauthenticated"
+    email: string
+    username: string
     user: {
         data: {
             auth: {
-                email: string
-                username: string
                 token: string
                 refresh_token: string
             }

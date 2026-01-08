@@ -1,17 +1,22 @@
 {
-  "users":[
-    {"status": "unauthenticated",
-        "user": {
-            "data": {
-                "email": "cleb@email.com",
-                "username": "clebin",
-                "token": "",
-                "password": ""
-            },
-            "info": {
-                "name": "Cleber",
-                "age": 34
-            }
-        }}
+  "users": [
+    {
+      "email": "cleb@email.com",
+      "password": "$2a$10$eWbDWNB1jhcL4dpl.cqofuUpzLl69rpqDJwIUbxj9zPhHorxrV.su",
+      "status": "unauthenticated",
+      "user": {
+        "data": {
+          "id": 1,
+          "username": "clebin",
+          "token": "",
+          "refresh_token": ""
+        },
+        "info": {
+          "name": "Cleber",
+          "age": 34
+        }
+      },
+      "id": 1
+    }
   ]
 }
