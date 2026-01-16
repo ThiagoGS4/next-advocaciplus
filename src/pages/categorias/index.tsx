@@ -25,7 +25,7 @@ export default function Categorias() {
                     key={categorie.id}
                     title={categorie.title}
                     desc={categorie.desc}
-                    icon={categorie.icon}
+                    id={categorie.id}
                 />
             ))}
         </>

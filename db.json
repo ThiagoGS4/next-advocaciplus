@@ -25,62 +25,52 @@
         {
             "id": 1,
             "title": "Direito Trabalhista",
-            "desc": "Ações e consultoria sobre vínculo empregatício, verbas rescisórias, horas extras, assédio e acordos trabalhistas.",
-            "icon": "BackpackIcon"
+            "desc": "Ações e consultoria sobre vínculo empregatício, verbas rescisórias, horas extras, assédio e acordos trabalhistas."
         },
         {
             "id": 2,
             "title": "Direito Penal",
-            "desc": "Defesa e acompanhamento em inquéritos e processos criminais, audiências, medidas cautelares e recursos.",
-            "icon": "CheckCircledIcon"
+            "desc": "Defesa e acompanhamento em inquéritos e processos criminais, audiências, medidas cautelares e recursos."
         },
         {
             "id": 3,
             "title": "Direito Civil",
-            "desc": "Contratos, responsabilidade civil, indenizações, cobranças, obrigações e solução de disputas entre particulares.",
-            "icon": "FileIcon"
+            "desc": "Contratos, responsabilidade civil, indenizações, cobranças, obrigações e solução de disputas entre particulares."
         },
         {
             "id": 4,
             "title": "Direito de Família",
-            "desc": "Divórcio, guarda, pensão alimentícia, partilha de bens, união estável e mediação familiar.",
-            "icon": "GroupIcon"
+            "desc": "Divórcio, guarda, pensão alimentícia, partilha de bens, união estável e mediação familiar."
         },
         {
             "id": 5,
             "title": "Direito Tributário",
-            "desc": "Planejamento tributário, defesa em autuações, recuperação de créditos, parcelamentos e contencioso fiscal.",
-            "icon": "ClipboardIcon"
+            "desc": "Planejamento tributário, defesa em autuações, recuperação de créditos, parcelamentos e contencioso fiscal."
         },
         {
             "id": 6,
             "title": "Direito Empresarial",
-            "desc": "Constituição de empresas, acordos entre sócios, governança, contratos comerciais e reestruturações.",
-            "icon": "BookmarkIcon"
+            "desc": "Constituição de empresas, acordos entre sócios, governança, contratos comerciais e reestruturações."
         },
         {
             "id": 7,
             "title": "Direito do Consumidor",
-            "desc": "Problemas com produtos/serviços, cobranças indevidas, negativação, reembolsos e ações contra fornecedores.",
-            "icon": "LightningBoltIcon"
+            "desc": "Problemas com produtos/serviços, cobranças indevidas, negativação, reembolsos e ações contra fornecedores."
         },
         {
             "id": 8,
             "title": "Direito Imobiliário",
-            "desc": "Compra e venda, locação, condomínio, usucapião, regularização de imóveis e análise documental.",
-            "icon": "HomeIcon"
+            "desc": "Compra e venda, locação, condomínio, usucapião, regularização de imóveis e análise documental."
         },
         {
             "id": 9,
             "title": "Direito Previdenciário",
-            "desc": "Aposentadorias, auxílios, benefícios por incapacidade, revisões, recursos no INSS e ações judiciais.",
-            "icon": "HeartIcon"
+            "desc": "Aposentadorias, auxílios, benefícios por incapacidade, revisões, recursos no INSS e ações judiciais."
         },
         {
             "id": 10,
             "title": "Direito Digital e LGPD",
-            "desc": "Adequação à LGPD, contratos de tecnologia, incidentes de dados, termos de uso e disputas online.",
-            "icon": "GlobeIcon"
+            "desc": "Adequação à LGPD, contratos de tecnologia, incidentes de dados, termos de uso e disputas online."
         }
     ]
 }
