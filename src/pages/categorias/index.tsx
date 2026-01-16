@@ -19,15 +19,19 @@ export default function Categorias() {
 
     return (
         <>
-            <h2>categorias profissionais</h2>
-            {listCategories?.map((categorie) => (
-                <CardCategoria
-                    key={categorie.id}
-                    title={categorie.title}
-                    desc={categorie.desc}
-                    id={categorie.id}
-                />
-            ))}
+            <div className="h-screen w-screen">
+                <h2>categorias profissionais</h2>
+                <div className={styles.cards}>
+                    {listCategories?.map((categorie) => (
+                        <CardCategoria
+                            key={categorie.id}
+                            title={categorie.title}
+                            desc={categorie.desc}
+                            id={categorie.id}
+                        />
+                    ))}
+                </div>
+            </div>
         </>
     )
 }
