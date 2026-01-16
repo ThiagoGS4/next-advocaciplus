@@ -1,14 +1,16 @@
-import { apiLogin } from "@/services/api"
+import { api, apiLogin } from "@/services/api"
 import { IUserProps } from "@/types/login"
 import { destroyCookie, setCookie } from "nookies"
 import { createContext, ReactNode, useContext, useState } from "react"
 import { getApiClient } from "@/services/axios"
 import { AxiosInstance } from "axios"
 import { useRouter } from "next/router"
+import { GetServerSidePropsContext } from "next"
 
 interface ILoginContextProps {
-    signIn(username: string, password: string): Promise<boolean | string>
-    signOut(): void
+    signIn: (username: string, password: string) => Promise<boolean | string>
+    signOut: () => void
+    logTest: () => string
     apiClient: AxiosInstance
 }
 
@@ -17,85 +19,131 @@ interface ILoginContextprovider {
     session: IUserProps
 }
 
-const loginContext = createContext<ILoginContextProps>({} as ILoginContextProps)
+const LoginContext = createContext<ILoginContextProps>({} as ILoginContextProps)
 
-export const useLogin = () => useContext(loginContext) //parei aqui(08/01/26), preciso fazer o logim funfar agora...
+export const useLogin = () => useContext(LoginContext) //parei aqui(08/01/26), preciso fazer o login funfar agora...
 
-export function UseloginContext({ children, session: userSession }: ILoginContextprovider) {
-
+export function LoginContextProvider({
+    children,
+    session: userSession,
+}: ILoginContextprovider) {
     const [session, setSession] = useState<IUserProps | null>(userSession)
 
     const apiClient = getApiClient(session)
 
     const router = useRouter()
 
-    async function signIn(email: string, password: string): Promise<string | boolean> {
-        console.log("tentando logar...")
+    const signIn = async (
+        email: string,
+        password: string
+    ): Promise<string | boolean> => {
+        console.log("tentando logar...", email, password)
         try {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const userData: any = (await apiLogin).post("/users/login", {
-                email,
-                password,
+            const userData: any = await api.post("/login", {
+                email: email,
+                password: password,
             })
-            const expirationTime = new Date(new Date().setHours(new Date().getHours() + 3))
+            console.log("aqui -> ", userData)
+
+            const expirationTime = new Date(
+                new Date().setHours(new Date().getHours() + 3)
+            )
 
             const userLogged: IUserProps = {
-                email: userData.email,
-                status: "authenticated",
-                username: userData.username,
                 user: {
-                    data: {
-                        auth: {
-                            token: userData.user.data.auth.token,
-                            refresh_token: userData.user.data.auth.refresh_token
+                    email: userData.email,
+                    status: "authenticated",
+                    username: userData.username,
+                    user: {
+                        data: {
+                            auth: {
+                                token: userData.data.accessToken,
+                                refresh_token:
+                                    userData.data.user.user.data.refresh_token,
+                            },
+                            info: {
+                                name: userData.data.user.user.info.name,
+                                age: userData.data.user.user.info.age,
+                            },
                         },
-                        info: {
-                            name: userData.user.data.info.name,
-                            age: userData.user.data.info.age
-                        }
-                    }
-                }
+                    },
+                },
             }
+
+            console.log("chega aqui 1")
 
             setSession(userLogged)
 
-            setCookie(undefined, "advcp-auth-token-access", userData.user.data.auth.token, {
-                path: '/',
-                expires: expirationTime
-            })
-            setCookie(undefined, "advcp-auth-token-refresh", userData.user.data.auth.refresh_token, {
-                path: '/',
-                expires: expirationTime
-            })
+            console.log("chega aqui 2")
+
+            setCookie(
+                undefined,
+                "advcp-auth-token-access",
+                userLogged.user.user.data.auth.token,
+                {
+                    path: "/",
+                    expires: expirationTime,
+                }
+            )
+            setCookie(
+                undefined,
+                "advcp-auth-token-refresh",
+                userLogged.user.user.data.auth.refresh_token,
+                {
+                    path: "/",
+                    expires: expirationTime,
+                }
+            )
 
             //const claimsData = jwt.decode(userData.user.data.auth.token)
             //setCookie(undefined, "advcp-auth-token", claimsData)
-            setCookie(undefined, "advcp-auth-token", userData.user.data.auth.token, {
-                path: '/',
-                expires: expirationTime
-            })
+            setCookie(
+                undefined,
+                "advcp-auth-token",
+                userLogged.user.user.data.auth.token,
+                {
+                    path: "/",
+                    expires: expirationTime,
+                }
+            )
+            console.log("login concluído...")
             return true
         } catch (error) {
             return error as string
         }
     }
 
-    function signOut(){
+    const signOut = () => {
         destroyCookie(undefined, "advcp-access-token", {
-            path: '/'
+            path: "/",
         })
         destroyCookie(undefined, "advcp-auth-token-access", {
-            path: '/'
+            path: "/",
         })
         destroyCookie(undefined, "advcp-auth-token-refresh", {
-            path: '/'
+            path: "/",
         })
-        setSession(null);
-        router.push('/');
+        setSession(null)
+        router.push("/")
+    }
+
+    const logTest = () => {
+        return "aaa"
     }
 
     return (
-    <loginContext.Provider value={{signIn, signOut, apiClient}}>
-        {children}
-    </loginContext.Provider>)
+        <LoginContext.Provider value={{ signIn, signOut, apiClient, logTest }}>
+            {children}
+        </LoginContext.Provider>
+    )
+}
+
+export function useLoginContext() {
+    const ctx = useContext(LoginContext)
+    if (!ctx)
+        throw new Error(
+            "useLoginContext precisa estar dentro de <MeuProvider />"
+        )
+    return ctx
 }

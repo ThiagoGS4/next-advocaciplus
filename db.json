@@ -1,22 +1,86 @@
 {
-  "users": [
-    {
-      "email": "cleb@email.com",
-      "password": "$2a$10$eWbDWNB1jhcL4dpl.cqofuUpzLl69rpqDJwIUbxj9zPhHorxrV.su",
-      "status": "unauthenticated",
-      "user": {
-        "data": {
-          "id": 1,
-          "username": "clebin",
-          "token": "",
-          "refresh_token": ""
-        },
-        "info": {
-          "name": "Cleber",
-          "age": 34
+    "users": [
+        {
+            "email": "cleb@email.com",
+            "password": "$2a$10$eWbDWNB1jhcL4dpl.cqofuUpzLl69rpqDJwIUbxj9zPhHorxrV.su",
+            "status": "unauthenticated",
+            "user": {
+                "data": {
+                    "id": 1,
+                    "username": "clebin",
+                    "auth": {
+                        "token": "",
+                        "refresh_token": ""
+                    }
+                },
+                "info": {
+                    "name": "Cleber",
+                    "age": 34
+                }
+            },
+            "id": 1
         }
-      },
-      "id": 1
-    }
-  ]
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "title": "Direito Trabalhista",
+            "desc": "Ações e consultoria sobre vínculo empregatício, verbas rescisórias, horas extras, assédio e acordos trabalhistas.",
+            "icon": "BackpackIcon"
+        },
+        {
+            "id": 2,
+            "title": "Direito Penal",
+            "desc": "Defesa e acompanhamento em inquéritos e processos criminais, audiências, medidas cautelares e recursos.",
+            "icon": "CheckCircledIcon"
+        },
+        {
+            "id": 3,
+            "title": "Direito Civil",
+            "desc": "Contratos, responsabilidade civil, indenizações, cobranças, obrigações e solução de disputas entre particulares.",
+            "icon": "FileIcon"
+        },
+        {
+            "id": 4,
+            "title": "Direito de Família",
+            "desc": "Divórcio, guarda, pensão alimentícia, partilha de bens, união estável e mediação familiar.",
+            "icon": "GroupIcon"
+        },
+        {
+            "id": 5,
+            "title": "Direito Tributário",
+            "desc": "Planejamento tributário, defesa em autuações, recuperação de créditos, parcelamentos e contencioso fiscal.",
+            "icon": "ClipboardIcon"
+        },
+        {
+            "id": 6,
+            "title": "Direito Empresarial",
+            "desc": "Constituição de empresas, acordos entre sócios, governança, contratos comerciais e reestruturações.",
+            "icon": "BookmarkIcon"
+        },
+        {
+            "id": 7,
+            "title": "Direito do Consumidor",
+            "desc": "Problemas com produtos/serviços, cobranças indevidas, negativação, reembolsos e ações contra fornecedores.",
+            "icon": "LightningBoltIcon"
+        },
+        {
+            "id": 8,
+            "title": "Direito Imobiliário",
+            "desc": "Compra e venda, locação, condomínio, usucapião, regularização de imóveis e análise documental.",
+            "icon": "HomeIcon"
+        },
+        {
+            "id": 9,
+            "title": "Direito Previdenciário",
+            "desc": "Aposentadorias, auxílios, benefícios por incapacidade, revisões, recursos no INSS e ações judiciais.",
+            "icon": "HeartIcon"
+        },
+        {
+            "id": 10,
+            "title": "Direito Digital e LGPD",
+            "desc": "Adequação à LGPD, contratos de tecnologia, incidentes de dados, termos de uso e disputas online.",
+            "icon": "GlobeIcon"
+        }
+    ]
 }

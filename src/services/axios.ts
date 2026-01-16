@@ -3,9 +3,12 @@ import axios from "axios"
 import { destroyCookie, parseCookies } from "nookies"
 import { revalidateToken } from "./revalidateToken"
 
-export function getApiClient(session?: IUserProps | null, serverSide?: boolean) {
+export function getApiClient(
+    session?: IUserProps | null,
+    serverSide?: boolean
+) {
     const axiosInstance = axios.create({
-        baseURL: "localhost:3000",
+        baseURL: "http://localhost:3000",
         timeout: 100000,
     })
 
@@ -13,12 +16,12 @@ export function getApiClient(session?: IUserProps | null, serverSide?: boolean) 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const cookies: any = { ...parseCookies(undefined), date: Date.now() }
 
-        config.headers["advcp-id-token"] = session?.email
+        config.headers["advcp-id-token"] = session?.user.email
         config.headers["advcp-access-token"] = serverSide
-            ? session?.user.data.auth.token
+            ? session?.user.user.data.auth.token
             : cookies["advcp-auth-token-access"]
         config.headers["advcp-refresh-token"] = serverSide
-            ? session?.user.data.auth.refresh_token
+            ? session?.user.user.data.auth.refresh_token
             : cookies["advcp-auth-token-refresh"]
 
         return config
@@ -40,10 +43,10 @@ export function getApiClient(session?: IUserProps | null, serverSide?: boolean) 
                 const res = await revalidateToken(
                     session,
                     serverSide
-                        ? session.user.data.auth.token
+                        ? session.user.user.data.auth.token
                         : cookies["advcp-auth-token-access"],
                     serverSide
-                        ? session.user.data.auth.refresh_token
+                        ? session.user.user.data.auth.refresh_token
                         : cookies["advcp-auth-token-refresh"]
                 )
                 if (res) {
@@ -60,12 +63,16 @@ export function getApiClient(session?: IUserProps | null, serverSide?: boolean) 
 
     axiosInstance.interceptors.response.use(
         (response) => response,
-        async function (error) {
+        (error) => {
+            console.log("passa aquia aasdaii")
+
             if (error.response?.status === 401) {
                 destroyCookie(undefined, "advcp-auth-token")
                 window.location.href = "/"
                 throw error
-            } else return error.response
+            } else {
+                return error
+            }
         }
     )
 
@@ -74,12 +81,12 @@ export function getApiClient(session?: IUserProps | null, serverSide?: boolean) 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getApiLogin(cookies?: any) {
     const axiosInstance = axios.create({
-        baseURL: "localhost:3000",
+        baseURL: "192.168.0.6:3000",
         timeout: 100000,
         withCredentials: true,
     })
 
-    axiosInstance.defaults.headers.common['Cookie'] = cookies
+    axiosInstance.defaults.headers.common["Cookie"] = cookies
 
     axiosInstance.interceptors.response.use(
         (response) => response,

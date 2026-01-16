@@ -12,8 +12,9 @@ import {
 } from "@radix-ui/react-icons"
 import { useState } from "react"
 import { GetServerSidePropsContext } from "next"
-import { Input } from "@heroui/react"
-import { useLogin } from '@/contexts/loginContext';
+import { Button, Input } from "@heroui/react"
+import { useLogin } from "@/contexts/LoginContext"
+import { useRouter } from "next/router"
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -30,13 +31,24 @@ export default function Home() {
 
     const { signIn } = useLogin()
 
+    const router = useRouter()
+
     const [hasError, setHasError] = useState(false)
     const [passwordShow, setPasswordShow] = useState(false)
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("") //email
 
-    function login() {
-        signIn(username, password)
+    async function login() {
+        try {
+            const resp = await signIn(username, password)
+            console.log('resp -> ', resp);
+            router.push('/categorias')
+            
+        } catch (error) {
+            console.log('erro: -> ', error);
+            
+            throw error
+        }
     }
 
     return (
@@ -113,7 +125,10 @@ export default function Home() {
                         />
                     </Box>
                     <Box maxWidth="200px">
-                        <button onClick={login}></button>
+                        <Button
+                            onClick={login}
+                            style={{ cursor: "pointer" }}
+                        ></Button>
                     </Box>
                 </div>
             </main>

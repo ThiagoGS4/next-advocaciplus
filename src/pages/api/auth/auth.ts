@@ -8,18 +8,20 @@ import { NextApiRequest, NextApiResponse } from "next"
 const jwtSign = (object: any): string => {
     // mexer aqui no auth??
     const user: IUserProps = {
-        status: object.status,
-        email: "",
-        username: "",
         user: {
-            data: {
-                auth: {
-                    token: "",
-                    refresh_token: "",
-                },
-                info: {
-                    name: "",
-                    age: 0,
+            status: object.status,
+            email: "",
+            username: "",
+            user: {
+                data: {
+                    auth: {
+                        token: "",
+                        refresh_token: "",
+                    },
+                    info: {
+                        name: "",
+                        age: 0,
+                    },
                 },
             },
         },
