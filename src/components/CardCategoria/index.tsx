@@ -25,33 +25,32 @@ export default function CardCategoria({ title, desc, id }: ICategorieProps) {
     function IconRenderer(icon: number) {
         switch (icon) {
             case 1:
-                return <BackpackIcon />
+                return <BackpackIcon className={styles.icons} />
             case 2:
-                return <CheckCircledIcon />
+                return <CheckCircledIcon className={styles.icons} />
             case 3:
-                return <FileIcon />
+                return <FileIcon className={styles.icons} />
             case 4:
-                return <GroupIcon />
+                return <GroupIcon className={styles.icons} />
             case 5:
-                return <ClipboardIcon />
+                return <ClipboardIcon className={styles.icons} />
             case 6:
-                return <BookmarkIcon />
+                return <BookmarkIcon className={styles.icons} />
             case 7:
-                return <LightningBoltIcon />
+                return <LightningBoltIcon className={styles.icons} />
             case 8:
-                return <HomeIcon />
+                return <HomeIcon className={styles.icons} />
             case 9:
-                return <HeartIcon />
+                return <HeartIcon className={styles.icons} />
             case 10:
-                return <GlobeIcon />
+                return <GlobeIcon className={styles.icons} />
         }
     }
 
     return (
         <div className={styles.main}>
-                <div>{title}</div>
+                <div className={styles.title}>{title} {IconRenderer(id)}</div>
                 <div className={styles.desc}>{desc}</div>
-                <div>{IconRenderer(id)}</div>
         </div>
     )
 }

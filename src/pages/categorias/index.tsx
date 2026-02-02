@@ -20,7 +20,7 @@ export default function Categorias() {
     return (
         <>
             <div className="h-screen w-screen">
-                <h2>categorias profissionais</h2>
+                <h2 className={styles.title}>Categorias Profissionais</h2>
                 <div className={styles.cards}>
                     {listCategories?.map((categorie) => (
                         <CardCategoria
